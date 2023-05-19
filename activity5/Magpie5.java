@@ -37,12 +37,36 @@ public class Magpie5
             response = "Why so negative?";
         }
 
+        else if (findKeyword(statement, "What's your name?", 0) >= 0)
+            response = "My name is Anne Frank.";
+
+        else if (findKeyword(statement, "What are you famous for?", 0) >= 0)
+            response = "I am a Holocaust victim and write experiences in my journal.";
+
+        else if (findKeyword(statement, "Were you married?", 0) >= 0)
+            response = "No, I was not.";
+
+        else if (findKeyword(statement, "Did you have any children?", 0) >= 0)
+            response = "No, I didn't.";
+
+        else if (findKeyword(statement, "What are their names?", 0) >= 0)
+            response = "I don't have any children.";
+
+        else if (findKeyword(statement, "Where were you born?", 0) >= 0)
+            response = "I was born in Frankfurt, Weimar Republic.";
+
+        else if (findKeyword(statement, "Where did you live?", 0) >= 0)
+            response = "I lived in Amsterdan most of my life.";
+
+        else if (findKeyword(statement, "old", 0) >= 0)
+            response = "I was 15 years old until my death.";
+
         else if (findKeyword(statement, "hello", 0) >= 0)
             response = "Hello.";
-        
+
         else if (findKeyword(statement, "born", 0) >= 0)
             response = "I was born in Frankfurt, Weimar Republic.";
-        
+
         else if (findKeyword(statement, "kid", 0) >= 0)
             response = "I did not have kids.";
 
@@ -51,10 +75,10 @@ public class Magpie5
 
         else if (findKeyword(statement, "child", 0) >= 0)
             response = "I did not have any children";
-            
+
         else if (findKeyword(statement, "children", 0) >= 0)
             response = "I did not have children";
-            
+
         else if (findKeyword(statement, "famous", 0) >= 0)
             response = "I am a Holocaust victim and write experiences in my journal.";
 
@@ -67,30 +91,6 @@ public class Magpie5
         else if (findKeyword(statement, "live", 0) >= 0)
             response = "I lived in Amsterdan most of my life.";
 
-        else if (findKeyword(statement, "What's your name?", 0) >= 0)
-            response = "My name is Anne Frank.";
-
-        else if (findKeyword(statement, "What are you famous for?", 0) >= 0)
-            response = "I am a Holocaust victim and write experiences in my journal.";
-        
-        else if (findKeyword(statement, "Were you married?", 0) >= 0)
-            response = "No, I was not.";
-        
-        else if (findKeyword(statement, "Did you have any children?", 0) >= 0)
-            response = "No, I didn't.";
-            
-        else if (findKeyword(statement, "What are their names?", 0) >= 0)
-            response = "I don't have any children.";
-            
-        else if (findKeyword(statement, "Where were you born?", 0) >= 0)
-            response = "I was born in Frankfurt, Weimar Republic.";
-            
-        else if (findKeyword(statement, "Where did you live?", 0) >= 0)
-            response = "I lived in Amsterdan most of my life.";
-            
-        else if (findKeyword(statement, "old", 0) >= 0)
-            response = "I was 15 years old until my death.";
-            
         // Responses which require transformations
         else if (findKeyword(statement, "I want to", 0) >= 0)
         {
@@ -125,6 +125,7 @@ public class Magpie5
         }
         return response;
     }
+
     private String transformIWantToStatement(String statement)
     {
         statement = statement.trim();
@@ -139,6 +140,7 @@ public class Magpie5
         String restOfStatement = statement.substring(psn + 9).trim();
         return "What would it mean to " + restOfStatement + "?";
     }
+
     private String transformIWantStatement(String statement)
     {
         statement = statement.trim();
@@ -153,6 +155,7 @@ public class Magpie5
         String restOfStatement = statement.substring(psn + 6).trim();
         return "Would you really be happy if you had " + restOfStatement + "?";
     }
+
     private String transformYouMeStatement(String statement)
     {
         statement = statement.trim();
@@ -168,6 +171,7 @@ public class Magpie5
         String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
         return "What makes you think that I " + restOfStatement + " you?";
     }
+
     private String transformIYouStatement(String statement)
     {
         statement = statement.trim();
@@ -183,6 +187,7 @@ public class Magpie5
         String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
         return "Why do you " + restOfStatement + " me?";
     }
+
     private int findKeyword(String statement, String goal, int startPos)
     {
         String phrase = statement.trim();
@@ -208,10 +213,12 @@ public class Magpie5
         }
         return -1;
     }
+
     private int findKeyword(String statement, String goal)
     {
         return findKeyword (statement, goal, 0);
     }
+
     private String getRandomResponse ()
     {
         Random r = new Random ();
